@@ -40,8 +40,9 @@ def doProcess(js):
     r = requests.post(url, json=data, headers=header)
     print(r.json())
 
+path = sys.argv[1] if len(sys.argv) >= 2 else "."
 
-os.chdir(".")
+os.chdir(path)
 for file in glob.glob("*.json"):
     f = open(file)
     j = json.load(f)
