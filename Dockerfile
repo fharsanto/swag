@@ -8,6 +8,6 @@ COPY requirements.txt requirements.txt
 
 RUN pip3 install -r requirements.txt
 
-COPY . .
+COPY . /app
 
 ENTRYPOINT ["/usr/local/bin/python3", "-u", "main.py"]
