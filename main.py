@@ -2,6 +2,7 @@ import glob
 import os
 import json
 import requests
+import sys
 # from urllib.parse import urlencode
 # from urllib.request import Request, urlopen
 
@@ -40,10 +41,12 @@ def doProcess(js):
     r = requests.post(url, json=data, headers=header)
     print(r.json())
 
-path = sys.argv[1] if len(sys.argv) >= 2 else "."
 
+path = sys.argv[1] if len(sys.argv) >= 2 else "."
+print("Change dir to " + path)
 os.chdir(path)
 for file in glob.glob("*.json"):
+    print("Reading "+file)
     f = open(file)
     j = json.load(f)
     doProcess(j)
